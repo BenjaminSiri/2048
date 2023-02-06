@@ -28,7 +28,6 @@ data:		private Node topLeft
 		private Node bottomRight
 		
 methods:	public Board(tL, tR, bL, bR)
-		public void buildBoard()
 		public void moveUp()
 		public void moveDown()
 		public void moveRight()
