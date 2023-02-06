@@ -1,0 +1,9 @@
+Ben Siri 2-5-23
+
+Personal project 
+
+Class Node
+
+Class Board
+
+Class DrawGame
