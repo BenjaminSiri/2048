@@ -1,9 +1,39 @@
 Ben Siri 2-5-23
 
-Personal project 
+Personal project
 
 Class Node
+data:		private int x
+		private int y
+		private int value
+		private Node right
+		private Node left
+		private Node up
+		private Node down
+	
+methods:	public Node(x, y, value, right, left, up, down)
+		public int getValue()
+		public void setValue(int)
+		public Node getRight()
+		public Node getLeft()
+		public Node getUp()
+		public Node getDown()
+		public bool canAbsorb(Node)
+		public void absorb(Node)
 
 Class Board
+data:		private Node topLeft
+		private Node topRight
+		private Node bottomLeft
+		private Node bottomRight
+		
+methods:	public Board(tL, tR, bL, bR)
+		public void buildBoard()
+		public void moveUp()
+		public void moveDown()
+		public void moveRight()
+		public void moveLeft()
+		public void newNumbers()
 
 Class DrawGame
+Javaswift gui generator
