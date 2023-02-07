@@ -25,12 +25,16 @@ Class Board
 data:		private int[][] table
 		
 methods:	public Board()
+		public int[][] getTable()
+		public int rowLength()
+		public int colLength()
 		public void moveUp()
 		public void moveDown()
 		public void moveRight()
 		public void moveLeft()
 		public void newNumbers()
-		public void absorb(int thisx, int thisy, int otherx, int othery)
+		public bool canMerge(int thisx, int thisy, int otherx, int othery)
+		public void merge(int thisx, int thisy, int otherx, int othery)
 
 Class DrawGame
 Javaswift gui generator
