@@ -35,6 +35,7 @@ methods:	public Board()
 		public void newNumbers()
 		public bool canMerge(int thisx, int thisy, int otherx, int othery)
 		public void merge(int thisx, int thisy, int otherx, int othery)
+		public String toString()
 
 Class DrawGame
 Javaswift gui generator

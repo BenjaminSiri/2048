@@ -33,9 +33,11 @@ public class Board {
 	}
 	
 	public void moveUp() {
-		for(int i=0; i < this.colLength(); i++) { //Bottom -> Up
+		for(int i=0; i < this.colLength()-1; i++) { //Bottom -> Up
 			for(int j=0; j < this.rowLength(); j++) { //Left -> Right
-				
+				if(canMerge(i, j, i+1, j)) {
+					merge(i, j, i+1, j);
+				}
 			}
 		}
 		
@@ -55,10 +57,21 @@ public class Board {
 	}
 	
 	public boolean canMerge(int thisx, int thisy, int otherx, int othery) {
-		return true;
+		int[][] currentTable = getTable();
+		if(((currentTable[thisx][thisy] != 0 && currentTable[otherx][othery] != 0)
+				&& (currentTable[thisx][thisy] == currentTable[otherx][othery]))
+				|| (currentTable[thisx][thisy] == 0 && currentTable[otherx][othery] != 0)) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void merge(int thisx, int thisy, int otherx, int othery) {
+		int[][] currentTable = getTable();
+		currentTable[thisx][thisy] = currentTable[thisx][thisy] * 2;
 		
+		currentTable[otherx][othery] = 0;
+		
+		table = currentTable;
 	}
 }
