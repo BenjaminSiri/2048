@@ -11,6 +11,11 @@ public class Board {
 	 */
 	public Board(int x, int y) {
 		table = new int[x][y];
+		for(x=0; x < 4; x++) {
+			for(y=0; y < 4; y++) {
+				table[x][y] = 0;
+			}
+		}
 	}
 	
 	/**
@@ -20,6 +25,11 @@ public class Board {
 	 */
 	public Board() {
 		table = new int[4][4];
+		for(int i=0; i < 4; i++) {
+			for(int j=0; j < 4; j++) {
+				table[i][j] = 0;
+			}
+		}
 	}
 	
 	public int[][] getTable() {
