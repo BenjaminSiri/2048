@@ -43,20 +43,19 @@ public class Board {
 	}
 	
 	public void moveUp() {
-		for(int i=0; i < this.colLength()-1; i++) { // Bottom -> Up
-			for(int j=0; j < this.rowLength(); j++) { // Left -> Right
-				if(canMerge(i, j, i+1, j)) {
-					merge(i, j, i+1, j);
+		for(int i=colLength(); i > 0; i--) { // Top -> Bottom
+			for(int j=0; j < rowLength() - 1; j++) { // Left -> Right
+				if(canMerge(i, j, i-1, j)) {
+					merge(i, j, i-1, j);
 				}
 			}
 		}
 		
 	}
 	
-	//Copy from moveUp but reverse
 	public void moveDown() {
-		for(int i=this.colLength(); i < this.colLength()-1; i++) { // Bottom -> Up
-			for(int j=0; j < this.rowLength(); j++) { // Left -> Right
+		for(int i=0; i < colLength()-1; i++) { // Bottom -> Top
+			for(int j=0; j < this.rowLength() - 1; j++) { // Left -> Right
 				if(canMerge(i, j, i+1, j)) {
 					merge(i, j, i+1, j);
 				}
