@@ -1,6 +1,6 @@
 Ben Siri 2-5-23
 
-(0,3)       (3,3)
+(0,0)       (0,3)
 -----------------
 |   |   |   |   |
 | 0 | 0 | 0 | 0 |
@@ -18,7 +18,7 @@ Ben Siri 2-5-23
 | 0 | 0 | 0 | 0 |
 |   |   |   |   |
 -----------------
-(0,0)       (3,0)
+(3,0)       (3,3)
 
 Personal project
 Class Board
@@ -33,8 +33,6 @@ methods:	public Board()
 		public void moveRight()
 		public void moveLeft()
 		public void newNumbers()
-		public bool canMerge(int thisx, int thisy, int otherx, int othery)
-		public void merge(int thisx, int thisy, int otherx, int othery)
 		public String toString()
 
 Class DrawGame

@@ -11,8 +11,8 @@ public class Board {
 	 */
 	public Board(int x, int y) {
 		table = new int[x][y];
-		for(x=0; x < 4; x++) {
-			for(y=0; y < 4; y++) {
+		for(int i=0; i < x; i++) {
+			for(int j=0; j < y; j++) {
 				table[x][y] = 0;
 			}
 		}
@@ -27,7 +27,12 @@ public class Board {
 		table = new int[4][4];
 		for(int i=0; i < 4; i++) {
 			for(int j=0; j < 4; j++) {
-				table[i][j] = 0;
+				if(i==1 && j==1) {
+					table[i][j] = 1;
+				}
+				else {
+					table[i][j] = 0;
+				}
 			}
 		}
 	}
@@ -43,29 +48,20 @@ public class Board {
 	}
 	
 	public void moveUp() {
-		for(int i=colLength(); i > 0; i--) { // Top -> Bottom
-			for(int j=0; j < rowLength() - 1; j++) { // Left -> Right
-				if(canMerge(i, j, i-1, j)) {
-					merge(i, j, i-1, j);
-				}
-			}
-		}
-		
+		// Iterate through each column
+		// Move all elements to a stack
+		// Parse through logic as we take out of the stack
+		// Add new numbers
 	}
 	
 	public void moveDown() {
-		for(int i=0; i < colLength()-1; i++) { // Bottom -> Top
-			for(int j=0; j < this.rowLength() - 1; j++) { // Left -> Right
-				if(canMerge(i, j, i+1, j)) {
-					merge(i, j, i+1, j);
-				}
-			}
-		}
 		
 	}
+	
 	public void moveRight() {
 		
 	}
+	
 	public void moveLeft() {
 		
 	}
@@ -74,26 +70,15 @@ public class Board {
 		
 	}
 	
-	public boolean canMerge(int thisx, int thisy, int otherx, int othery) {
-		int[][] currentTable = getTable();
-		if(((currentTable[thisx][thisy] != 0 && currentTable[otherx][othery] != 0)
-				&& (currentTable[thisx][thisy] == currentTable[otherx][othery]))
-				|| (currentTable[thisx][thisy] == 0 && currentTable[otherx][othery] != 0)) {
-			return true;
-		}
-		return false;
-	}
-	
-	public void merge(int thisx, int thisy, int otherx, int othery) {
-		int[][] currentTable = getTable();
-		currentTable[thisx][thisy] = currentTable[thisx][thisy] * 2;
-		
-		currentTable[otherx][othery] = 0;
-		
-		table = currentTable;
-	}
 	
 	public String toString() {
-		return "";
+		String out = "";
+		for(int i=0; i < rowLength(); i++) {
+			for(int j=0; j<colLength(); j++) {
+				out += table[i][j];
+			}
+			out += '\n';
+		}
+		return out;
 	}
 }
