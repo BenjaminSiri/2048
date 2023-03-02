@@ -48,10 +48,7 @@ public class Board {
 	}
 	
 	public void moveUp() {
-		// Iterate through each column
-		// Move all elements to a stack
-		// Parse through logic as we take out of the stack
-		// Add new numbers
+
 	}
 	
 	public void moveDown() {
@@ -59,7 +56,24 @@ public class Board {
 	}
 	
 	public void moveRight() {
+		Stack stack = new Stack();
+		// Iterate through each row
+		for (int i=0; i<colLength(); i++) {
+			// Move all elements to a stack
+			for(int j=0; j<rowLength(); j++) {
+				if (table[i][j] != 0) {
+					stack.push(table[i][j]);
+				}
+			}
+			// Parse through logic as we take out of the stack
+			int current = 0;
+			while(!stack.empty()) {
+				
+			}
+		}
 		
+		
+		// Add new numbers
 	}
 	
 	public void moveLeft() {
@@ -73,8 +87,8 @@ public class Board {
 	
 	public String toString() {
 		String out = "";
-		for(int i=0; i < rowLength(); i++) {
-			for(int j=0; j<colLength(); j++) {
+		for(int i=0; i < colLength(); i++) {
+			for(int j=0; j < rowLength(); j++) {
 				out += table[i][j];
 			}
 			out += '\n';

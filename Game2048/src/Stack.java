@@ -10,9 +10,10 @@ public class Stack {
 		head = node;
 	}
 	
-	public void push(Node node) {
-		node.setNext(head.getNext());
-		setHead(node);
+	public void push(int value) {
+		Node newNode = new Node(value);
+		newNode.setNext(head.getNext());
+		setHead(newNode);
 	}
 	
 	public int pop() {
