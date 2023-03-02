@@ -47,7 +47,26 @@ public class Board {
 		// Iterate through each column
 		for (int j=0; j<rowLength(); j++) {
 			// Move all elements to a stack
-			
+			for (int i=colLength(); i>0; i--) {
+				if(table[i][j] != 0) {
+					stack.push(table[i][j]);
+				}
+			}
+			// Parse through logic as we take out of the stack
+			int placeHolder = 0;
+			while(!stack.empty()) {
+				if(placeHolder == 0) {
+					table[0][j] = stack.pop();
+					placeHolder++;
+				}
+				else if(table[placeHolder][j] == stack.peek()) {
+					table[placeHolder-1][j] = stack.pop()*2;				
+				}
+				else {
+					table[placeHolder][j] = stack.pop();
+					placeHolder++;
+				}
+			}
 		}
 	}
 	
@@ -60,7 +79,7 @@ public class Board {
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {
 			// Move all elements to a stack
-			for(int j=rowLength()-1; j>0; j--) {
+			for (int j=rowLength()-1; j>0; j--) {
 				if (table[i][j] != 0) {
 					stack.push(table[i][j]);
 				}
