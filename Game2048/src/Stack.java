@@ -20,5 +20,16 @@ public class Stack {
 		head.setNext(head.getNext());
 		return outValue;
 	}
+	
+	public int peek() {
+		return head.getValue();
+	}
+	
+	public boolean empty() {
+		if(head == null) {
+			return true;
+		}
+		return false;
+	}
 
 }
