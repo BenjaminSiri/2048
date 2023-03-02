@@ -43,7 +43,12 @@ public class Board {
 	}
 	
 	public void moveUp() {
-
+		Stack stack = new Stack();
+		// Iterate through each column
+		for (int j=0; j<rowLength(); j++) {
+			// Move all elements to a stack
+			
+		}
 	}
 	
 	public void moveDown() {
@@ -74,11 +79,8 @@ public class Board {
 					table[i][placeHolder] = stack.pop();
 					placeHolder++;
 				}
-				
 			}
-		}
-		
-		
+		}		
 		// Add new numbers
 	}
 	
