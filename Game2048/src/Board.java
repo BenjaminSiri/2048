@@ -89,7 +89,7 @@ public class Board {
 					placeHolder--;
 				}
 				else if(table[placeHolder][j] == stack.peek()) {
-					table[placeHolder-1][j] = stack.pop()*2;
+					table[placeHolder+1][j] = stack.pop()*2;
 				}
 				else {
 					table[placeHolder][j] = stack.pop();
@@ -130,7 +130,31 @@ public class Board {
 	}
 	
 	public void moveLeft() {
-		
+		Stack stack = new Stack();
+		// Iterate through each row
+		for (int i=0; i<colLength(); i++) {
+			// Move all elements to a stack
+			for (int j=0; j<rowLength(); j++) {
+				if(table[i][j] != 0) {
+					stack.push(table[i][j]);
+				}
+			}
+			// Parse through logic as we take out of the stack
+			int placeHolder = rowLength()-1;
+			while(!stack.empty()) {
+				if(placeHolder == rowLength()-1) {
+					table[i][placeHolder] = stack.pop();
+					placeHolder--;
+				}
+				else if(table[i][placeHolder] == stack.peek()) {
+					table[i][placeHolder+1] = stack.pop();
+				}
+				else {
+					table[i][placeHolder] = stack.pop();
+					placeHolder--;
+				}
+			}
+		}
 	}
 	
 	public void newNumbers() {
