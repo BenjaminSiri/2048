@@ -68,10 +68,36 @@ public class Board {
 				}
 			}
 		}
+		// Add new numbers
 	}
 	
 	public void moveDown() {
-		
+		Stack stack = new Stack();
+		// Iterate through each column
+		for (int j=0; j<rowLength(); j++) {
+			// Move all elements to a stack
+			for (int i=0; i<colLength(); i++) {
+				if(table[i][j] != 0) {
+					stack.push(table[i][j]);
+				}
+			}
+			// Parse through logic as we take out of the stack
+			int placeHolder = colLength()-1;
+			while(!stack.empty()) {
+				if(placeHolder == colLength()-1) {
+					table[placeHolder][j] = stack.pop();
+					placeHolder--;
+				}
+				else if(table[placeHolder][j] == stack.peek()) {
+					table[placeHolder-1][j] = stack.pop()*2;
+				}
+				else {
+					table[placeHolder][j] = stack.pop();
+					placeHolder--;
+				}
+			}
+		}
+		// Add new numbers
 	}
 	
 	public void moveRight() {
