@@ -55,14 +55,25 @@ public class Board {
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {
 			// Move all elements to a stack
-			for(int j=0; j<rowLength(); j++) {
+			for(int j=rowLength()-1; j>0; j--) {
 				if (table[i][j] != 0) {
 					stack.push(table[i][j]);
 				}
 			}
 			// Parse through logic as we take out of the stack
-			int current = 0;
+			int placeHolder = 0;
 			while(!stack.empty()) {
+				if(placeHolder == 0) {
+					table[i][0] = stack.pop();
+					placeHolder++;
+				}
+				else if(table[i][placeHolder] == stack.peek()) {
+					table[i][placeHolder-1] = stack.pop()*2;
+				}
+				else {
+					table[i][placeHolder] = stack.pop();
+					placeHolder++;
+				}
 				
 			}
 		}
