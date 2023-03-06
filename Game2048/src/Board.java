@@ -50,6 +50,7 @@ public class Board {
 			for (int i=colLength(); i>0; i--) {
 				if(table[i][j] != 0) {
 					stack.push(table[i][j]);
+					table[i][j] = 0;
 				}
 			}
 			// Parse through logic as we take out of the stack
@@ -79,6 +80,7 @@ public class Board {
 			for (int i=0; i<colLength(); i++) {
 				if(table[i][j] != 0) {
 					stack.push(table[i][j]);
+					table[i][j] = 0;
 				}
 			}
 			// Parse through logic as we take out of the stack
@@ -108,6 +110,7 @@ public class Board {
 			for (int j=rowLength()-1; j>0; j--) {
 				if (table[i][j] != 0) {
 					stack.push(table[i][j]);
+					table[i][j] = 0;
 				}
 			}
 			// Parse through logic as we take out of the stack
@@ -137,6 +140,7 @@ public class Board {
 			for (int j=0; j<rowLength(); j++) {
 				if(table[i][j] != 0) {
 					stack.push(table[i][j]);
+					table[i][j] = 0;
 				}
 			}
 			// Parse through logic as we take out of the stack
