@@ -72,7 +72,7 @@ public class Board {
 				}
 			}
 		}
-		// Add new numbers
+		newNumbers();
 	}
 	
 	public void moveDown() {
@@ -102,7 +102,7 @@ public class Board {
 				}
 			}
 		}
-		// Add new numbers
+		newNumbers();
 	}
 	
 	public void moveRight() {
@@ -132,7 +132,7 @@ public class Board {
 				}
 			}
 		}		
-		// Add new numbers
+		newNumbers();
 	}
 	
 	public void moveLeft() {
@@ -162,6 +162,7 @@ public class Board {
 				}
 			}
 		}
+		newNumbers();
 	}
 	
 	public void newNumbers() {
@@ -170,9 +171,11 @@ public class Board {
 		int remainingEmptySpaces = emptySpaces;
 		for (int i=0; i < colLength(); i++) {
 			for (int j=0; j < rowLength(); j++) {
-				remainingEmptySpaces--;
-				if(remainingEmptySpaces == randomOne || remainingEmptySpaces == randomTwo) {
-					table[i][j] = 2;
+				if(table[i][j] == 0) {
+					remainingEmptySpaces--;
+					if(remainingEmptySpaces == randomOne || remainingEmptySpaces == randomTwo) {
+						table[i][j] = 2;
+					}
 				}
 			}
 		}
