@@ -35,6 +35,7 @@ public class Test2 {
 			else if(response.equals("d")) {
 				testboard.moveRight();
 			}
+			System.out.println(testboard);
 			
 			System.out.println("Make a move. (w/a/s/d)");
 			response = scnr.nextLine();

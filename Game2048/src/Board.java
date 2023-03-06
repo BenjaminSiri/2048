@@ -50,7 +50,7 @@ public class Board {
 		// Iterate through each column
 		for (int j=0; j<rowLength(); j++) {
 			// Move all elements to a stack
-			for (int i=colLength(); i>0; i--) {
+			for (int i=colLength()-1; i>0; i--) {
 				if(table[i][j] != 0) {
 					stack.push(table[i][j]);
 					table[i][j] = 0;
@@ -105,7 +105,7 @@ public class Board {
 		newNumbers();
 	}
 	
-	public void moveRight() {
+	public void moveLeft() {
 		Stack stack = new Stack();
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {
@@ -135,7 +135,7 @@ public class Board {
 		newNumbers();
 	}
 	
-	public void moveLeft() {
+	public void moveRight() {
 		Stack stack = new Stack();
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {

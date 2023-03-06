@@ -11,14 +11,20 @@ public class Stack {
 	}
 	
 	public void push(int value) {
-		Node newNode = new Node(value);
-		newNode.setNext(head.getNext());
-		setHead(newNode);
+		if(head == null) {
+			Node newNode = new Node(value);
+			setHead(newNode);
+		}
+		else {
+			Node newNode = new Node(value);
+			newNode.setNext(head.getNext());
+			setHead(newNode);
+		}
 	}
 	
 	public int pop() {
 		int outValue = head.getValue();
-		head.setNext(head.getNext());
+		setHead(head.getNext());
 		return outValue;
 	}
 	
@@ -31,6 +37,19 @@ public class Stack {
 			return true;
 		}
 		return false;
+	}
+	
+	public String toString() {
+		String out = "";
+		Node current = head;
+		if(current == null) {
+			return "( )";
+		}
+		while(current != null) {
+			out += "(" + current.getValue() + ")-> ";
+			current = current.getNext();		
+		}
+		return out;
 	}
 
 }
