@@ -12,12 +12,12 @@ public class Node {
 		return value;
 	}
 	
-	public Node getNext() {
-		return next;
-	}
-	
 	public void setValue(int value) {
 		this.value = value;
+	}
+	
+	public Node getNext() {
+		return next;
 	}
 	
 	public void setNext(Node next) {
