@@ -50,7 +50,7 @@ public class Board {
 		// Iterate through each column
 		for (int j=0; j<rowLength(); j++) {
 			// Move all elements to a stack
-			for (int i=colLength()-1; i>0; i--) {
+			for (int i=colLength()-1; i>=0; i--) {
 				if(table[i][j] != 0) {
 					stack.push(table[i][j]);
 					table[i][j] = 0;
@@ -63,7 +63,7 @@ public class Board {
 					table[0][j] = stack.pop();
 					placeHolder++;
 				}
-				else if(table[placeHolder][j] == stack.peek()) {
+				else if(table[placeHolder-1][j] == stack.peek()) {
 					table[placeHolder-1][j] = stack.pop()*2;				
 				}
 				else {
@@ -93,7 +93,7 @@ public class Board {
 					table[placeHolder][j] = stack.pop();
 					placeHolder--;
 				}
-				else if(table[placeHolder][j] == stack.peek()) {
+				else if(table[placeHolder+1][j] == stack.peek()) {
 					table[placeHolder+1][j] = stack.pop()*2;
 				}
 				else {
@@ -110,7 +110,7 @@ public class Board {
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {
 			// Move all elements to a stack
-			for (int j=rowLength()-1; j>0; j--) {
+			for (int j=rowLength()-1; j>=0; j--) {
 				if (table[i][j] != 0) {
 					stack.push(table[i][j]);
 					table[i][j] = 0;
@@ -123,7 +123,7 @@ public class Board {
 					table[i][0] = stack.pop();
 					placeHolder++;
 				}
-				else if(table[i][placeHolder] == stack.peek()) {
+				else if(table[i][placeHolder-1] == stack.peek()) {
 					table[i][placeHolder-1] = stack.pop()*2;
 				}
 				else {
@@ -146,6 +146,7 @@ public class Board {
 					table[i][j] = 0;
 				}
 			}
+			System.out.println(stack);
 			// Parse through logic as we take out of the stack
 			int placeHolder = rowLength()-1;
 			while(!stack.empty()) {
@@ -153,8 +154,8 @@ public class Board {
 					table[i][placeHolder] = stack.pop();
 					placeHolder--;
 				}
-				else if(table[i][placeHolder] == stack.peek()) {
-					table[i][placeHolder+1] = stack.pop();
+				else if(table[i][placeHolder+1] == stack.peek()) {
+					table[i][placeHolder+1] = stack.pop()*2;
 				}
 				else {
 					table[i][placeHolder] = stack.pop();

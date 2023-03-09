@@ -17,7 +17,7 @@ public class Stack {
 		}
 		else {
 			Node newNode = new Node(value);
-			newNode.setNext(head.getNext());
+			newNode.setNext(head);
 			setHead(newNode);
 		}
 	}
@@ -29,6 +29,9 @@ public class Stack {
 	}
 	
 	public int peek() {
+		if(head == null) {
+			return -1;
+		}
 		return head.getValue();
 	}
 	
