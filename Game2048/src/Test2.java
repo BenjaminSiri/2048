@@ -18,7 +18,7 @@ public class Test2 {
 			System.out.println("Closing...");
 		}
 		
-		System.out.println("Make a move. (w/a/s/d)");
+		System.out.println("Make a move (w/a/s/d).  Press q to quit.");
 		response = scnr.nextLine();
 		response = response.trim();
 		
@@ -42,6 +42,7 @@ public class Test2 {
 			response = response.trim();
 		}
 		
+		System.out.println("Quiting");
 		scnr.close();
 	}
 }
