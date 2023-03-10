@@ -28,10 +28,12 @@ Table[i][j]
 (i=3,j=0)   (i=3,j=3)
 
 Personal project
+
 Class Board
 data:		private int[][] table
 		
-methods:	public Board()
+methods:	public Board(int, int)
+		public Board()
 		public int[][] getTable()
 		public int rowLength()
 		public int colLength()
@@ -41,6 +43,34 @@ methods:	public Board()
 		public void moveLeft()
 		public void newNumbers()
 		public String toString()
+		
+Class Node
+data:		private int value
+		private Node next
 
-Class DrawGame
-Javaswift gui generator
+methods:	public Node(int)
+		public int getValue()
+		public void setValue()
+		public Node getNext()
+		public void setNext()
+
+Class Stack
+data:		private Node head
+
+methods:	public Stack()
+		public void setHead()
+		public void push()
+		public int pop()
+		public int peek()
+		public boolean empty()
+		public String toString()
+
+Class GUI
+data:		private int spacing
+
+methods:	public GUI
+
+Class Panel
+data:
+methods:	public void paintComponent()
+

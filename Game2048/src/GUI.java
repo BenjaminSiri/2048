@@ -5,7 +5,7 @@ import java.util.*;
 
 public class GUI extends JFrame{
 	
-	int spacing = 10;
+	int private spacing = 10;
 	
 	public GUI() {
 		this.setTitle("2048 test");
