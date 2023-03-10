@@ -5,11 +5,11 @@ import java.util.*;
 
 public class GUI extends JFrame{
 	
-	int private spacing = 10;
+	private int spacing = 10;
 	
 	public GUI() {
 		this.setTitle("2048 test");
-		this.setSize(400, 435);
+		this.setSize(400, 430);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setResizable(false);
