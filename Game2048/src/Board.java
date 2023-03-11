@@ -146,7 +146,6 @@ public class Board {
 					table[i][j] = 0;
 				}
 			}
-			System.out.println(stack);
 			// Parse through logic as we take out of the stack
 			int placeHolder = rowLength()-1;
 			while(!stack.empty()) {
@@ -179,6 +178,21 @@ public class Board {
 					}
 				}
 			}
+		}
+	}
+	
+	public void input(char key) {
+		if (key == 'w') {
+			this.moveUp();
+		}
+		else if (key == 's') {
+			this.moveDown();
+		}
+		else if (key == 'a') {
+			this.moveLeft();
+		}
+		else if (key == 'd') {
+			this.moveRight();
 		}
 	}
 	
