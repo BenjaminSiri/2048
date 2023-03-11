@@ -2,21 +2,10 @@ import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
-public class Test3 implements Runnable{
+public class Test3 {
 	
-	GUI gui = new GUI();
 	
 	public static void main(String[] args) {
-		new Thread(new Test3()).start();
-		
+		GUI gui = new GUI();	
 	}
-	
-	@Override
-	public void run() {
-		while(true) {
-			gui.repaint();
-		}
-	}
-	
-	
 }

@@ -6,9 +6,8 @@ import java.util.*;
 
 public class GUI extends JFrame{
 	
-	private int spacing = 5;
-	public Board board = new Board();
-	
+	public Panel panel;
+		
 	public GUI() {
 		this.setTitle("2048 test");
 		this.setSize(400, 430);
@@ -16,53 +15,57 @@ public class GUI extends JFrame{
 		this.setVisible(true);
 		this.setResizable(false);		
 		
-		Panel panel = new Panel(board.getTable());
+		panel = new Panel();
 		this.setContentPane(panel);
+		this.addKeyListener(panel);
 		
-		Action action = new Action();
-		this.addKeyListener(action);
 	}
 	
-	public class Panel extends JPanel{
-		int[][] grid;
+	
+	public class Panel extends JPanel implements KeyListener{
 				
-		public Panel(int[][] grid) {
-			this.grid = grid;
+		public Board board = new Board();
+		private int spacing = 5;
+		
+		public Panel() {
+				
 		}
 		
-		public void paintComponent(Graphics g) {
-			g.setColor(Color.DARK_GRAY);
-			g.fillRect(0, 0, 400, 400);
-			g.setColor(Color.GRAY);
+		public void paint(Graphics g) {
+			super.paint(g);
+			Graphics2D g2 = (Graphics2D)g;
+			
+			g2.setColor(Color.DARK_GRAY);
+			g2.fillRect(0, 0, 400, 400);
 			int size = 90;
 			for (int i=0; i<4; i++) {
 				for (int j=0; j<4; j++) {
-					g.fillRect((spacing+i*size)+20, (spacing+j*size)+20, size-2*spacing, size-2*spacing);
-					JLabel label = new JLabel(Integer.toString(grid[i][j]));
-					label.setBounds((spacing+i*size)+20, (spacing+j*size)+20, size-2*spacing, size-2*spacing);
-					this.add(label);
+					g2.setColor(Color.GRAY);
+					g2.fillRect((spacing+i*size)+20, (spacing+j*size)+20, size-2*spacing, size-2*spacing);
+					g2.setColor(Color.BLACK);
+					g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
+					g2.drawString(Integer.toString(board.getTable()[j][i]), ((spacing+i*size))+(size/2), ((spacing+j*size)+20)+(size/2));
 				}
 			}
 		}
-	}
-	
-	public class Action implements KeyListener{
 		
+			
 		@Override
 		public void keyReleased(KeyEvent e) {
+			System.out.println(e.getKeyChar());
 			board.input(e.getKeyChar());
+			panel.repaint();
 		}
-		
+			
 		@Override
 		public void keyTyped(KeyEvent e) {
-			
+				
 		}
-		
+			
 		@Override
 		public void keyPressed(KeyEvent e) {
-			
-		}
-		
+				
+		}		
 	}
 }
 
