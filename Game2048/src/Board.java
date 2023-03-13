@@ -72,7 +72,7 @@ public class Board {
 				}
 			}
 		}
-		newNumbers();
+		newNumber();
 	}
 	
 	public void moveDown() {
@@ -102,7 +102,7 @@ public class Board {
 				}
 			}
 		}
-		newNumbers();
+		newNumber();
 	}
 	
 	public void moveLeft() {
@@ -132,7 +132,7 @@ public class Board {
 				}
 			}
 		}		
-		newNumbers();
+		newNumber();
 	}
 	
 	public void moveRight() {
@@ -162,18 +162,17 @@ public class Board {
 				}
 			}
 		}
-		newNumbers();
+		newNumber();
 	}
 	
-	public void newNumbers() {
+	public void newNumber() {
 		int randomOne = (int)(Math.random() * emptySpaces);
-		int randomTwo = (int)(Math.random() * emptySpaces);
 		int remainingEmptySpaces = emptySpaces;
 		for (int i=0; i < colLength(); i++) {
 			for (int j=0; j < rowLength(); j++) {
 				if(table[i][j] == 0) {
 					remainingEmptySpaces--;
-					if(remainingEmptySpaces == randomOne || remainingEmptySpaces == randomTwo) {
+					if(remainingEmptySpaces == randomOne) {
 						table[i][j] = 2;
 					}
 				}
