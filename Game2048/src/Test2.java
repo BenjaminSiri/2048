@@ -11,7 +11,7 @@ public class Test2 {
 		response = response.trim();
 		
 		if(response.equals("y")){
-			testboard.newNumbers();
+			testboard.newNumber();
 			System.out.println(testboard);
 		}
 		else {
