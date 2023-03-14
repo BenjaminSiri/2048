@@ -28,9 +28,11 @@ public class Board {
 	public Board() {
 		emptySpaces = 16;
 		table = new int[4][4];
+		int count = 1;
 		for(int i=0; i < 4; i++) {
 			for(int j=0; j < 4; j++) {
 				table[i][j] = 0;
+
 			}
 		}
 	}
@@ -45,8 +47,19 @@ public class Board {
 		return this.getTable()[0].length;
 	}
 	
+	public int[][] transpose(int[][] input){
+		int[][] out = new int[4][4];
+		for (int i=0; i<4; i++) {
+			for (int j=0; j<4; j++) {
+				out[j][i] = getTable()[i][j];
+			}
+		}
+		return out;
+	}
+	
 	public void moveUp() {
 		Stack stack = new Stack();
+		int[][] initial = getTable();
 		// Iterate through each column
 		for (int j=0; j<rowLength(); j++) {
 			// Move all elements to a stack
@@ -78,6 +91,7 @@ public class Board {
 	
 	public void moveDown() {
 		Stack stack = new Stack();
+		int[][] initial = getTable();
 		// Iterate through each column
 		for (int j=0; j<rowLength(); j++) {
 			// Move all elements to a stack
@@ -109,6 +123,7 @@ public class Board {
 	
 	public void moveLeft() {
 		Stack stack = new Stack();
+		int[][] initial = getTable();
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {
 			// Move all elements to a stack
@@ -140,6 +155,7 @@ public class Board {
 	
 	public void moveRight() {
 		Stack stack = new Stack();
+		int[][] initial = getTable();
 		// Iterate through each row
 		for (int i=0; i<colLength(); i++) {
 			// Move all elements to a stack
@@ -180,7 +196,8 @@ public class Board {
 					if(remainingEmptySpaces == randomOne) {
 						table[i][j] = 2;
 						emptySpaces--;
-						numberAddedCheck = true;					}
+						numberAddedCheck = true;
+					}
 				}
 			}
 		}

@@ -7,6 +7,11 @@ import java.util.*;
 public class GUI extends JFrame{
 	
 	public Panel panel;
+	
+	public JButton startButton;
+	public JButton restartButton;
+	
+	public JLabel score;
 		
 	public GUI() {
 		this.setTitle("2048 test");
@@ -35,20 +40,27 @@ public class GUI extends JFrame{
 			super.paint(g);
 			Graphics2D g2 = (Graphics2D)g;
 			
+			//board.newNumber();
+			
 			g2.setColor(Color.DARK_GRAY);
 			g2.fillRect(0, 0, 400, 400);
 			int size = 90;
 			for (int i=0; i<4; i++) {
 				for (int j=0; j<4; j++) {
+					int scale = (int)(Math.log(board.getTable()[j][i]) / Math.log(2));
+					scale = scale - 2;
 					if (board.getTable()[j][i] == 2) {
 						g2.setColor(Color.LIGHT_GRAY);
 					}
 					else if (board.getTable()[j][i] == 0){
 						g2.setColor(Color.GRAY);
 					}
-					else {
-						int scale = (int)(Math.log(board.getTable()[j][i]) / Math.log(2));
-						g2.setColor(new Color((232-(30*scale))%255, (225-(20*scale))%255, (174-(5*scale))%255));		
+					else if (scale <= 6){
+						g2.setColor(new Color((240+(scale))%255, (240-(40*scale))%255, (150-(20*scale))%255));		
+					}
+					else if (scale <= 14) {
+						scale = scale-7;
+						g2.setColor(new Color((240-(30*scale))%255, (60-(10*scale))%255, (180+(10*scale))%255));
 					}
 					g2.fillRect((spacing+i*size)+20, (spacing+j*size)+20, size-2*spacing, size-2*spacing);
 					g2.setColor(Color.BLACK);
