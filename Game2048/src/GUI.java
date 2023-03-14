@@ -47,9 +47,8 @@ public class GUI extends JFrame{
 						g2.setColor(Color.GRAY);
 					}
 					else {
-						int scale;
-						scale = (int)(Math.log(board.getTable()[j][i]) / Math.log(2));
-						g2.setColor(new Color((232-(20*scale))%255, (225-(5*scale))%255, (174-(5*scale))%255));		
+						int scale = (int)(Math.log(board.getTable()[j][i]) / Math.log(2));
+						g2.setColor(new Color((232-(30*scale))%255, (225-(20*scale))%255, (174-(5*scale))%255));		
 					}
 					g2.fillRect((spacing+i*size)+20, (spacing+j*size)+20, size-2*spacing, size-2*spacing);
 					g2.setColor(Color.BLACK);
@@ -62,7 +61,6 @@ public class GUI extends JFrame{
 			
 		@Override
 		public void keyReleased(KeyEvent e) {
-			System.out.println(e.getKeyChar());
 			board.input(e.getKeyChar());
 			panel.repaint();
 		}

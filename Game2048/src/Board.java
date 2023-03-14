@@ -64,7 +64,8 @@ public class Board {
 					placeHolder++;
 				}
 				else if(table[placeHolder-1][j] == stack.peek()) {
-					table[placeHolder-1][j] = stack.pop()*2;				
+					table[placeHolder-1][j] = stack.pop()*2;
+					emptySpaces++;
 				}
 				else {
 					table[placeHolder][j] = stack.pop();
@@ -95,6 +96,7 @@ public class Board {
 				}
 				else if(table[placeHolder+1][j] == stack.peek()) {
 					table[placeHolder+1][j] = stack.pop()*2;
+					emptySpaces++;
 				}
 				else {
 					table[placeHolder][j] = stack.pop();
@@ -125,6 +127,7 @@ public class Board {
 				}
 				else if(table[i][placeHolder-1] == stack.peek()) {
 					table[i][placeHolder-1] = stack.pop()*2;
+					emptySpaces++;
 				}
 				else {
 					table[i][placeHolder] = stack.pop();
@@ -155,6 +158,7 @@ public class Board {
 				}
 				else if(table[i][placeHolder+1] == stack.peek()) {
 					table[i][placeHolder+1] = stack.pop()*2;
+					emptySpaces++;
 				}
 				else {
 					table[i][placeHolder] = stack.pop();
@@ -168,15 +172,20 @@ public class Board {
 	public void newNumber() {
 		int randomOne = (int)(Math.random() * emptySpaces);
 		int remainingEmptySpaces = emptySpaces;
+		boolean numberAddedCheck = false;
 		for (int i=0; i < colLength(); i++) {
 			for (int j=0; j < rowLength(); j++) {
 				if(table[i][j] == 0) {
 					remainingEmptySpaces--;
 					if(remainingEmptySpaces == randomOne) {
 						table[i][j] = 2;
-					}
+						emptySpaces--;
+						numberAddedCheck = true;					}
 				}
 			}
+		}
+		if(!numberAddedCheck) {
+			System.out.println("NO NUMBER ADDED!!!");
 		}
 	}
 	
