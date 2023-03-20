@@ -6,7 +6,13 @@ import java.util.*;
 
 public class GUI extends JFrame{
 	
+	private static int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+	
+	
+	public Board board = new Board();
+	
 	public Panel panel;
+	public JPanel topPanel;
 	
 	public JButton startButton;
 	public JButton restartButton;
@@ -15,21 +21,52 @@ public class GUI extends JFrame{
 		
 	public GUI() {
 		this.setTitle("2048 test");
-		this.setSize(400, 430);
+		this.setSize(400, 450);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setResizable(false);		
+		this.setResizable(false);
+		this.setLayout(new BorderLayout());
+		
+		topPanel = new JPanel(new FlowLayout());
+		topPanel.setBackground(Color.DARK_GRAY);
+		startButton = new JButton("Start");
+		restartButton = new JButton("Restart");
+		topPanel.add(startButton);
+		topPanel.add(restartButton);
+		add(topPanel, BorderLayout.NORTH);
 		
 		panel = new Panel();
-		this.setContentPane(panel);
-		this.addKeyListener(panel);
+		add(panel, BorderLayout.CENTER);
 		
+		panel.getInputMap(IFW).put(KeyStroke.getKeyStroke("W"), "up");
+		panel.getInputMap(IFW).put(KeyStroke.getKeyStroke("A"), "left");
+		panel.getInputMap(IFW).put(KeyStroke.getKeyStroke("S"), "down");
+		panel.getInputMap(IFW).put(KeyStroke.getKeyStroke("D"), "right");
+		
+		panel.getActionMap().put("up", new MoveAction("up"));
+		panel.getActionMap().put("left", new MoveAction("up"));
+		panel.getActionMap().put("down", new MoveAction("up"));
+		panel.getActionMap().put("right", new MoveAction("up"));
+	}
+	
+	private class MoveAction extends AbstractAction {
+		String action;
+		
+		MoveAction(String action){
+			this.action = action;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println(e.getActionCommand());
+			board.input(e.getActionCommand().charAt(0));
+			panel.repaint();
+		}
 	}
 	
 	
-	public class Panel extends JPanel implements KeyListener{
+	private class Panel extends JPanel{
 				
-		public Board board = new Board();
 		private int spacing = 5;
 		
 		public Panel() {
@@ -39,8 +76,6 @@ public class GUI extends JFrame{
 		public void paint(Graphics g) {
 			super.paint(g);
 			Graphics2D g2 = (Graphics2D)g;
-			
-			//board.newNumber();
 			
 			g2.setColor(Color.DARK_GRAY);
 			g2.fillRect(0, 0, 400, 400);
@@ -68,25 +103,8 @@ public class GUI extends JFrame{
 					g2.drawString(Integer.toString(board.getTable()[j][i]), ((spacing+i*size))+(size/2), ((spacing+j*size)+20)+(size/2));
 				}
 			}
-		}
-		
-			
-		@Override
-		public void keyReleased(KeyEvent e) {
-			board.input(e.getKeyChar());
-			panel.repaint();
-		}
-			
-		@Override
-		public void keyTyped(KeyEvent e) {
-				
-		}
-			
-		@Override
-		public void keyPressed(KeyEvent e) {
-				
-		}		
-	}
+		}	
+	}		
 }
 
 
