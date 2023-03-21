@@ -47,6 +47,10 @@ public class GUI extends JFrame{
 		panel.getActionMap().put("left", new MoveAction("up"));
 		panel.getActionMap().put("down", new MoveAction("up"));
 		panel.getActionMap().put("right", new MoveAction("up"));
+		
+		ButtonHandler bhandler = new ButtonHandler();
+		startButton.addActionListener(bhandler);
+		restartButton.addActionListener(bhandler);
 	}
 	
 	private class MoveAction extends AbstractAction {
@@ -58,9 +62,22 @@ public class GUI extends JFrame{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(e.getActionCommand());
 			board.input(e.getActionCommand().charAt(0));
 			panel.repaint();
+		}
+	}
+	
+	private class ButtonHandler implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getActionCommand() == "Start") {
+				board.newNumber();
+				panel.repaint();
+			}
+			if(e.getActionCommand() == "Restart") {
+				board.restart();
+				panel.repaint();
+			}
 		}
 	}
 	

@@ -221,6 +221,14 @@ public class Board {
 		}
 	}
 	
+	public void restart() {
+		for(int i=0; i < colLength(); i++) {
+			for(int j=0; j < rowLength(); j++) {
+				table[i][j] = 0;
+			}
+		}
+	}
+	
 	
 	public String toString() {
 		String out = "";
