@@ -23,7 +23,6 @@ public class GUI extends JFrame{
 		this.setTitle("2048 test");
 		this.setSize(400, 450);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
 		
@@ -51,6 +50,8 @@ public class GUI extends JFrame{
 		ButtonHandler bhandler = new ButtonHandler();
 		startButton.addActionListener(bhandler);
 		restartButton.addActionListener(bhandler);
+		
+		this.setVisible(true);
 	}
 	
 	private class MoveAction extends AbstractAction {
